@@ -20,7 +20,7 @@
         <h1>~Guess the number~</h1>
         <div class="innerbox">
             <div class="calculatebox">
-                <h3>Enter your <br><span>Number:</span><br>(Between 10 to 20)</h3>
+                <h3>Enter your <br><span>Number:</span><br>(Between 10 to 50)</h3>
                 <input type="number" id='date'>
                 <button>Guess</button>
             </div>
@@ -29,35 +29,37 @@
                 <div id="result" class="resultpart">Enter the number</div>
                 <div id="choice" class="resultpart"><span>Remaining Choice : 5</span></div>
             </div>
-           
+
         </div>
         <div class="restart">
-        <div class="playagain">
-            <a href="index.html">Play again</a>
+            <div class="playagain">
+                <a href="index.html">Play again</a>
+            </div>
+            <span>Computer Guess the Number: </span>
         </div>
-        <span >Computer Guess the Number: </span>
-    </div>
         <footer>MADE BY <a href="https://snikdhendu-pramanik.vercel.app/">SNIKDHENDU PRAMANIK</a></footer>
     </div>
 
     <script>
         const min = 10
-        const max = 20
+        const max = 50
         // now if we want any random value in this range then we can do
 
-        let set_value =(Math.floor(Math.random() * (max - min))) + min //this is basically a formula
-        console.log(set_value)
+        let set_value = (Math.floor(Math.random() * (max - min))) + min //this is basically a formula
+        // console.log(set_value)
         let a = []
         let choiceleft = 5;
         let user_value = 0;
-        
+
         let user_input = document.querySelector('#date');
         let buttons = document.querySelector('button');
         const result = document.querySelector('#result')
         const prevchoice = document.querySelector('#prevchoice')
         const choice = document.querySelector('#choice');
-        const playagain=document.querySelector('.restart');
-        const c_guess=document.querySelector('.restart span');
+        const playagain = document.querySelector('.restart');
+        const c_guess = document.querySelector('.restart span');
+
+
 
 
         buttons.addEventListener('click', function () {
@@ -65,43 +67,46 @@
                 user_value = user_input.value;
                 if (user_value == set_value) {
                     console.log(user_value);
-                    // console.log("choose right")
                     result.innerHTML = "Hurray you choose it right  <span>&#10003;</span>"
                     result.style.color = 'green'
                     buttons.disabled = true;
                     user_input.disabled = true;
-                    playagain.style.display="flex"
-                    c_guess.innerHTML=`Computer also Guess the Number:${set_value}`
-                }
-                else {
-                    result.innerHTML = "Better luck next time   <span>&#10007;</span>"
-                    result.style.color = 'red'
-                    // console.log("Choose wrong")
+                    playagain.style.display = "flex"
+                    c_guess.innerHTML = `Computer also Guess the Number:${set_value}`
+                } else {
+                    if(set_value>user_value){
+                        result.innerHTML = "You guess lower than Actual number"
+                        result.style.color = 'red'
+                    }
+                    else{
+                        result.innerHTML = "You guess greater than the actual number"
+                        result.style.color = 'red'
+                    }
+                    
                 }
                 a.push(user_value);
                 prevchoice.innerHTML = `Your Previous choice:${a}`
                 choiceleft--;
                 choice.innerHTML = `Remaining Choice :${choiceleft}`
-                if (choiceleft === 0) {
 
+                // Check if the user has used all choices, but not if they guessed correctly
+                if (choiceleft == 0 && user_value != set_value) {
                     buttons.disabled = true;
                     user_input.disabled = true;
                     result.innerHTML = "Sorry !! You have used all your choices."
                     result.style.color = 'yellow';
-                    playagain.style.display="flex";
-                    c_guess.innerHTML=`Computer Guess the Number:${set_value}`
+                    playagain.style.display = "flex";
+                    c_guess.innerHTML = `Computer Guess the Number:${set_value}`
                 }
-            }
-
-            else {
+            } else {
                 // Inform the user that no more choices are allowed
                 result.innerHTML = "Sorry !! You have used all your choices."
                 result.style.color = 'yellow';
-                playagain.style.display="flex"
-                c_guess.innerHTML=`Computer Guess the Number:${set_value}`
+                playagain.style.display = "flex"
+                c_guess.innerHTML = `Computer Guess the Number:${set_value}`
             }
-
         })
+
 
 
 
