@@ -58,6 +58,7 @@
         const choice = document.querySelector('#choice');
         const playagain = document.querySelector('.restart');
         const c_guess = document.querySelector('.restart span');
+         const resultbox=document.querySelector('.resultbox');
 
 
 
@@ -69,6 +70,7 @@
                     console.log(user_value);
                     result.innerHTML = "Hurray you choose it right  <span>&#10003;</span>"
                     result.style.color = 'green'
+                    resultbox.style.border ='3px solid green'
                     buttons.disabled = true;
                     user_input.disabled = true;
                     playagain.style.display = "flex"
