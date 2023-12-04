@@ -68,6 +68,13 @@ footer{
     width: 136px;
     height: 43px;
 }
+.resultbox .resultpart {
+    font-size: 16px;
+    color: white;
+}
+#prevchoice{
+    font-size: 16px;
+}
 .restart span {
     color: white;
     font-size: 18px;
