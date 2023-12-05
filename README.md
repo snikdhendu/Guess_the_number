@@ -12,7 +12,7 @@ Welcome to the "Guess the Number" game! This simple web-based game allows users 
 
 ## How to Play
 
-1. Open the [Guess the Number](#) webpage.
+1. Open the [Guess the Number](https://guess-the-number-red.vercel.app/) webpage.
 2. Enter your guess in the input field provided (between 10 to 50).
 3. Click the "Guess" button to submit your guess.
 4. Receive feedback on your guess and see your remaining chances.
